@@ -978,7 +978,7 @@ end_header
             continue
         f.close()
         pass
-	return  
+    return
 
 def writeHTML(folder, numImages):
     from html import HTML
@@ -3584,7 +3584,7 @@ def calcVanishingPoints(allLines, numVPs):
     lines = allLines.copy()
     VPs = []
     VPLines = []
-    for VPIndex in xrange(numVPs):
+    for VPIndex in range(numVPs):
         points = lines[:, :2]
         lengths = np.linalg.norm(lines[:, 2:4] - lines[:, :2], axis=-1)
         normals = lines[:, 2:4] - lines[:, :2]
@@ -3593,7 +3593,7 @@ def calcVanishingPoints(allLines, numVPs):
         maxNumInliers = 0
         bestVP = np.zeros(2)
         #for _ in xrange(int(np.sqrt(lines.shape[0]))):
-        for _ in xrange(min(pow(lines.shape[0], 2), 100)):
+        for _ in range(min(pow(lines.shape[0], 2), 100)):
             sampledInds = np.random.choice(lines.shape[0], 2)
             if sampledInds[0] == sampledInds[1]:
                 continue
@@ -4126,7 +4126,7 @@ def testPlaneExtraction():
     return
 
 def estimateFocalLength(image):
-    from pylsd import lsd
+    from pylsd.lsd import lsd
     
     height = image.shape[0]
     width = image.shape[1]

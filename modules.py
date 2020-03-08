@@ -1141,11 +1141,10 @@ def calcMessages(planeSegmentations, planeDepths, planesY, numOutputPlanes = 21,
 
     return messages
 
-
 def crfrnnModule(inputs, image_dims, num_classes, theta_alpha, theta_beta, theta_gamma, num_iterations):
     current_path = os.path.dirname(os.path.realpath(__file__))
     custom_module = tf.load_op_library(current_path + '/crfasrnn/high_dim_filter.so')
-    from crfasrnn import high_dim_filter_grad  # Register gradients for the custom op
+    #from crfasrnn import high_dim_filter_grad  # Register gradients for the custom op
 
     if os.path.exists('weights.npy'):
         weights = np.load('weights.npy')
@@ -1164,7 +1163,7 @@ def crfrnnModule(inputs, image_dims, num_classes, theta_alpha, theta_beta, theta
     all_ones = np.ones((c, h, w), dtype=np.float32)
 
     outputs = []
-    for batchIndex in xrange(batchSize):
+    for batchIndex in range(batchSize):
         unaries = tf.transpose(inputs[0][batchIndex, :, :, :], perm=(2, 0, 1))
         rgb = tf.transpose(inputs[1][batchIndex, :, :, :], perm=(2, 0, 1))
 

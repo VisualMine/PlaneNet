@@ -17,7 +17,7 @@ from modules import *
 
 from planenet import PlaneNet
 from RecordReaderAll import *
-from crfasrnn.crfasrnn_layer import CrfRnnLayer
+#from crfasrnn.crfasrnn_layer import CrfRnnLayer
 
 #from SegmentationRefinement import *
 
@@ -574,7 +574,7 @@ def main(options):
                     last_snapshot_time = time.time()
                     pass
 
-                print bno,'train', ema[0] / ema_acc[0], 'val', ema[1] / ema_acc[1], 'train rgbd', ema[2] / ema_acc[2], 'val rgbd', ema[3] / ema_acc[3], 'loss', total_loss, 'time', time.time()-t0
+                #print bno,'train', ema[0] / ema_acc[0], 'val', ema[1] / ema_acc[1], 'train rgbd', ema[2] / ema_acc[2], 'val rgbd', ema[3] / ema_acc[3], 'loss', total_loss, 'time', time.time()-t0
 
                 if np.random.random() < 0.01:
                     print(losses)
@@ -1303,7 +1303,7 @@ if __name__=='__main__':
 
     args = parse_args()
 
-    print "keyname=%s task=%s started"%(args.keyname, args.task)
+    #print "keyname=%s task=%s started"%(args.keyname, args.task)
     try:
         if args.task == "train":
             main(args)

@@ -1,0 +1,33 @@
+
+conda create --name planenetenv python=3.7
+conda activate planenetenv
+
+pip install numpy
+pip install pillow
+pip install scipy
+pip install scikit-image
+pip install keras
+pip install h5py
+pip install pylsd
+pip install opencv-contrib-python
+pip install tensorflow==1.15.0
+
+# download planenet
+git clone https://github.com/VisualMine/PlaneNet.git
+cd ./PlaneNet
+
+# build crfasrnn_keras
+cd ./crfasrnn
+sh compile.sh
+cd ../
+
+# add to python path
+export PYTHONPATH=./crfasrnn
+
+# download pertained
+https://drive.google.com/open?id=1BhSDqDE33K438qZ3KFEFabfOlcIxrXiC
+
+unzip and place folder into PlaneNet/checkpoint
+
+# run prediction
+python predict.py --customImageFolder="./images"

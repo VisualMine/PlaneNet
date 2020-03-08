@@ -1,6 +1,6 @@
 nvcc = /usr/local/cuda/bin/nvcc
 cudalib = /usr/local/cuda/lib64/
-tensorflow = /usr/local/lib/python2.7/dist-packages/tensorflow/
+tensorflow = /usr/local/anaconda3/envs/planenetenv/lib/python3.7/site-packages/tensorflow_core
 #TF_LIB=$(python -c 'import tensorflow as tf; print(tf.sysconfig.get_lib())')
 
 all: tf_nndistance_so.so
