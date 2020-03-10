@@ -17,8 +17,22 @@
             "request": "launch",
             "program": "/Users/thomashogarth/Sites/PlaneNet/predict.py",
             "console": "integratedTerminal",
-            "args": ["--customImageFolder=./images"],
+            "args": ["--customImageFolder=./images",
+                    "--applicationType=logo_texture",
+                    "--textureImageFilename=texture_images/CVPR.jpg",
+                    "--imageIndex=0"],
             "env": {"PYTHONPATH":"/Users/thomashogarth/Sites/PlaneNet/crfasrnn"},
-        }      
+        },
+        {
+            "name": "vmvis.py",
+            "type": "python",
+            "request": "launch",
+            "program": "/Users/thomashogarth/Sites/PlaneNet/vmvis.py",
+            "console": "integratedTerminal",
+            "args": ["--frozen_graph_path=/Users/thomashogarth/Sites/PlaneNet/graph_freeze_plane_net_2020.pb",
+                     "--test_images_dir=/Users/thomashogarth/Dropbox/VM_AI/TEST_IMAGES",
+                     "--output_dir=--frozen_graph_path=/Users/thomashogarth/Sites/PlaneNet/output"],
+            "env": {"PYTHONPATH":"/Users/thomashogarth/Sites/PlaneNet/crfasrnn"},
+        }    
     ]
 }

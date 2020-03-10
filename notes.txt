@@ -31,3 +31,7 @@ unzip and place folder into PlaneNet/checkpoint
 
 # run prediction
 python predict.py --customImageFolder="./images"
+
+
+# calc projection matrix
+https://github.com/NVIDIA/Dataset_Utilities/blob/master/nvdu/core/camera.py
