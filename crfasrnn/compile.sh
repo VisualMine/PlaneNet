@@ -5,7 +5,7 @@
 #  *  If this script fails, please refer to https://www.tensorflow.org/extend/adding_an_op#build_the_op_library for help.
 #  -----------------------------------------------------------------------------------------------------------------------
 
-TF_INC=$(python -c 'import tensorflow as tf; print(tf.sysconfig.get_include())')
-TF_LIB=$(python -c 'import tensorflow as tf; print(tf.sysconfig.get_lib())')
+TF_CFLAGS=( $(python -c 'import tensorflow as tf; print(" ".join(tf.sysconfig.get_compile_flags()))') )
+TF_LFLAGS=( $(python -c 'import tensorflow as tf; print(" ".join(tf.sysconfig.get_link_flags()))') )
 
-g++ -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=0 -shared high_dim_filter.cc modified_permutohedral.cc -o high_dim_filter.so -fPIC -I $TF_INC -I$TF_INC/external/nsync/public/ -L$TF_LIB -ltensorflow_framework -O2
+g++ -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=0 -shared high_dim_filter.cc modified_permutohedral.cc -o high_dim_filter.so -fPIC ${TF_CFLAGS[@]} ${TF_LFLAGS[@]} -O2

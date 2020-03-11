@@ -50,16 +50,11 @@ loader.restore(sess, "%s/checkpoint.ckpt"%(checkpoint_dir))
 
 
 # freeze
-#res2 = []
-#for op in tf.get_default_graph().get_operations():
-#    res2.append(op.__str__())
-#print(res2)
-
 print(global_pred_dict.keys())
 
-graph = tf.get_default_graph()  # global_pred_dict['plane']
+graph = tf.get_default_graph()  
 input_graph_def = graph.as_graph_def()
-output_node_names = ['plane_pred']
+output_node_names = ['plane_pred', 'segmentation_pred', 'non_plane_mask_pred', 'non_plane_depth_pred', 'non_plane_normal_pred']
 
 output_graph_def = tf.graph_util.convert_variables_to_constants(
     sess, input_graph_def, output_node_names)
